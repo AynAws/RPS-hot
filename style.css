@@ -28,4 +28,25 @@ h3 {
 
 .right {
   text-align: end;
+  float: right;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.smtext {
+  display: none;
+}
+
+@media only screen and (max-width: 640px) {
+  .smtext {
+    display: contents;
+  }
+  .right {
+    text-align: start;
+    float: left;
+  }
 }
