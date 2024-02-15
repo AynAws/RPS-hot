@@ -12,4 +12,11 @@ if (x < 640) {
     document.getElementById('left').classList.remove('right');
     document.getElementById('d:none').classList.remove('smtext');
 } else {
+    document.getElementById('left').classList.add('right');
+    document.getElementById('d:none').classList.add('smtext');
+}
+
+function timer() {
+    let sec = 10;
+    setInterval(function(){document.getElementById('timer').textContent})
 }

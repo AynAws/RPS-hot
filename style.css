@@ -40,13 +40,3 @@ h3 {
 .smtext {
   display: none;
 }
-
-@media only screen and (max-width: 640px) {
-  .smtext {
-    display: contents;
-  }
-  .right {
-    text-align: start;
-    float: left;
-  }
-}
