@@ -16,7 +16,10 @@ if (x < 640) {
     document.getElementById('d:none').classList.add('smtext');
 }
 
+let time = 10;
 function timer() {
-    let sec = 10;
-    setInterval(function(){document.getElementById('timer').textContent})
+    time++;
+    console.log(time);
 }
+
+//setInterval(timer, 1000);
