@@ -16,10 +16,18 @@ if (x < 640) {
     document.getElementById('d:none').classList.add('smtext');
 }
 
-let time = 10;
+let time = 11;
+
+const stopTimer = () => clearInterval(interval);
+
 function timer() {
-    time++;
+    time--;
     console.log(time);
+    if (time <= 0) {
+        stopTimer();
+    }
 }
 
-//setInterval(timer, 1000);
+const interval = setInterval(timer, 1000);
+
+document.getElementById('timer');
