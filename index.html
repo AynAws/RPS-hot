@@ -32,9 +32,15 @@
     </head>
 
     <body>
-        <h3>Round: <span>x</span><br class="smtext" id="d:none">
-        <span class="right" id="left">Human wins: <span>x</span><br>Computer wins: <span>x</span><br> W/L: <span>x</span></span></h3>
-        <p id="timer">00</p>
+        <!--
+            roundCount counts rounds played
+            humanCount counts human wins
+            compCount counts computer wins
+            humanWL counts the human's win/loss ratio
+        -->
+        <h3>Round: <span id="roundCount">x</span><br class="smtext" id="d:none">
+        <span class="right" id="left">Human wins: <span id="humanCount">x</span><br>Computer wins: <span id="compCount">x</span><br> W/L: <span id="humanWL">x</span></span></h3>
+        <p id="timer" class="center">Javascript error.</p>
         <h3 class="bottom" id="shotgun">S-hot</h3>
         <footer>
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
