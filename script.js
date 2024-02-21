@@ -9,15 +9,16 @@ let compChoice = rps[randNum]; // decides what the computer chooses
 let humanChoice; // defines the varibale that will story the user's choice
 // WINDOW WIDTH
 let x = window.screen.width; // assigns screen width to a variable known as x
-console.log(x); // returns screen width in pixels
+console.log('Timer:' + x); // returns screen width in pixels
 // TIMER
 let time = 3; // the length of the timer in seconds
 document.getElementById('timer').textContent = time; // places the timer in HTML doc
 const stopTimer = () => clearInterval(interval); // stops the timer when called
 // COUNTERS
-let compCount = humanCount = roundCount = 0; // creates variables for the counters
+let compCount = 0;
+let humanCount = 0;
+let roundCount = 0; // creates variables for the counters
 let humanWL = humanCount / compCount; // creates the W/L ratio counter
-document.getElementById('roundCount').textContent
 
 //alert(`Welcome, ${name}!`)
 
@@ -31,24 +32,28 @@ if (x < 640) {
 
 function timer() {
     time--;
-    console.log(time);
+    console.log('Timer:' + time);
     if (time <= 0) {
         stopTimer();
     };
     document.getElementById('timer').textContent = time;
-}; // adds one to the variable "time"
+}; // subtracts one from the variable "time" until it hits 0
 const interval = setInterval(timer, 1000); // runs timer() every second
 
-console.log(compCount, humanCount, roundCount, humanWL);
+console.log('Computer count:' + compCount, 'Human count:' + humanCount, 'Round count:' + roundCount, 'W/L ratio:' + humanWL); // returns 0, 0, 0, NaN
 
-function game() {
+function game(compChooses) {
     function humanChooses() {
     }
-    function compRock() {
-    }
-    function compPaper() {
-    }
-    function compScissors() {
+    function compChooses() {
     }
     roundCount++;
+    console.log('Round count in game():' + roundCount);
+    document.getElementById('roundCount').textContent = roundCount;
 }
+
+function compRock() {
+}
+console.log(compChoice);
+game(compRock());
+console.log('Round count:' + roundCount);
