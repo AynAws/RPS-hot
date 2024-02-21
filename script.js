@@ -11,7 +11,7 @@ let humanChoice; // defines the varibale that will story the user's choice
 let x = window.screen.width; // assigns screen width to a variable known as x
 console.log('Timer:' + x); // returns screen width in pixels
 // TIMER
-let time = 3; // the length of the timer in seconds
+let time = 0; // creates the varibale timer
 document.getElementById('timer').textContent = time; // places the timer in HTML doc
 const stopTimer = () => clearInterval(interval); // stops the timer when called
 // COUNTERS
@@ -30,19 +30,9 @@ if (x < 640) {
     document.getElementById('d:none').classList.add('smtext');
 }; // makes the counters change sides based off of screen size (upon refresh)
 
-function timer() {
-    time--;
-    console.log('Timer:' + time);
-    if (time <= 0) {
-        stopTimer();
-    };
-    document.getElementById('timer').textContent = time;
-}; // subtracts one from the variable "time" until it hits 0
-const interval = setInterval(timer, 1000); // runs timer() every second
-
 console.log('Computer count:' + compCount, 'Human count:' + humanCount, 'Round count:' + roundCount, 'W/L ratio:' + humanWL); // returns 0, 0, 0, NaN
 
-function game(compChooses) {
+function game() {
     function humanChooses() {
     }
     function compChooses() {
@@ -50,10 +40,22 @@ function game(compChooses) {
     roundCount++;
     console.log('Round count in game():' + roundCount);
     document.getElementById('roundCount').textContent = roundCount;
+    time += 3;
+    timer();
 }
 
 function compRock() {
 }
-console.log(compChoice);
-game(compRock());
+console.log('Computer choice:' + compChoice);
 console.log('Round count:' + roundCount);
+
+function timer() {
+    time--;
+    console.log('Timer:' + time);
+    if (time <= 0) {
+        stopTimer();
+        game();
+    };
+    document.getElementById('timer').textContent = time;
+}; // subtracts one from the variable "time" until it hits 0
+const interval = setInterval(timer, 1000); // runs timer() every second
