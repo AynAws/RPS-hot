@@ -1,11 +1,11 @@
 //let name = prompt('What is your name?'); // Collects and stores user name
-// COMPUTER CHOICE
+// COMPUTER CHOICE (continues in compChooses func)
 let shot = ['shot', 'mirror', 'shield', 'reload']; // values for s-hot
 let rps = ['rock', 'paper', 'scissors']; // values for rock paper scissors
 let compList = rps;
 let randNum = Math.floor(Math.random()*compList.length); // generates a number to choose an option for the computer
-let compChoice = rps[randNum]; // decides what the computer chooses
-// HUMAN CHOICE
+let compChoice;
+// HUMAN CHOICE (continues in humanChooses func)
 let humanChoice; // defines the varibale that will story the user's choice
 // WINDOW WIDTH
 let x = window.screen.width; // assigns screen width to a variable known as x
@@ -40,30 +40,36 @@ if (x < 640) {
 console.log('Computer count:' + compCount, 'Human count:' + humanCount, 'Round count:' + roundCount, 'W/L ratio:' + humanWL); // returns 0, 0, 0, NaN
 
 function round() {
-    function humanChooses() {
+    /*function humanChooses() {
     }
     function compChooses() {
-    }
+        compChoice = compList[randNum]; // decides what the computer chooses
+        console.log('Computer choice:' + compChoice);
+    }*/
     function newRound() {
     roundCount++;
     console.log('Round count in round():' + roundCount);
-    time = 4;
-    timer();
+    time = 3;
+    interval;
     document.getElementById('roundCount').textContent = roundCount;
     document.getElementById('humanCount').textContent = humanCount;
     document.getElementById('compCount').textContent = compCount;
+    console.log('newRound() is being ran');
+    }
+    if (roundCount >= 5) {
+        newRound();
     }
 }
 
 function compRock() {
 }
-console.log('Computer choice:' + compChoice);
 console.log('Round count:' + roundCount);
 
 function timer() {
     time--;
     console.log('Timer:' + time);
-    if (time < 0) {
+    if (time <= 0) {
+        stopTimer();
         round();
     };
     document.getElementById('timer').textContent = time;
