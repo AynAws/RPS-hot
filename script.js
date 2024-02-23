@@ -11,7 +11,7 @@ let humanChoice; // defines the varibale that will story the user's choice
 let x = window.screen.width; // assigns screen width to a variable known as x
 console.log('Width:' + x); // returns screen width in pixels
 // TIMER
-let time = 4; // creates the varibale timer
+let time = 3; // creates the varibale timer
 document.getElementById('timer').textContent = time; // places the timer in HTML doc
 const stopTimer = () => clearInterval(interval); // stops the timer when called
 // COUNTERS
@@ -19,7 +19,6 @@ let compCount = 0; // creates variables for computer win count
 let humanCount = 0; // creates variables for human win count count
 let roundCount = 0; // creates variables for round count
 let humanWL = humanCount / compCount; // creates the W/L ratio counter
-
 
 //alert(`Welcome, ${name}!`)
 document.getElementById('userName').textContent = name;
@@ -40,12 +39,19 @@ if (x < 640) {
 console.log('Computer count:' + compCount, 'Human count:' + humanCount, 'Round count:' + roundCount, 'W/L ratio:' + humanWL); // returns 0, 0, 0, NaN
 
 function round() {
+    if (roundCount <= 5) {
+        newRound();
+    } else if (roundCount > 5) {
+        alert('gud');
+    } else {
+        alert('Javascript error.');
+    };
     /*function humanChooses() {
-    }
+    };
     function compChooses() {
         compChoice = compList[randNum]; // decides what the computer chooses
         console.log('Computer choice:' + compChoice);
-    }*/
+    };*/
     function newRound() {
     roundCount++;
     console.log('Round count in round():' + roundCount);
@@ -54,12 +60,8 @@ function round() {
     document.getElementById('roundCount').textContent = roundCount;
     document.getElementById('humanCount').textContent = humanCount;
     document.getElementById('compCount').textContent = compCount;
-    console.log('newRound() is being ran');
-    }
-    if (roundCount >= 5) {
-        newRound();
-    }
-}
+    };
+};
 
 function compRock() {
 }
@@ -68,7 +70,7 @@ console.log('Round count:' + roundCount);
 function timer() {
     time--;
     console.log('Timer:' + time);
-    if (time <= 0) {
+    if (time < 0) {
         stopTimer();
         round();
     };
