@@ -10,9 +10,6 @@ function randNum() {
 let compChoice;
 // HUMAN CHOICE (continues in humanChooses func)
 let humanChoice; // defines the varibale that will story the user's choice
-let rock;
-let paper;
-let scissors; // creates variables to be given a value by HTML later
 // WINDOW WIDTH
 let x = window.screen.width; // assigns screen width to a variable known as x
 console.log('Width:' + x); // returns screen width in pixels
@@ -46,7 +43,10 @@ if (x < 640) {
 console.log('Computer count:' + compCount, 'Human count:' + humanCount, 'Round count:' + roundCount, 'W/L ratio:' + humanWL); // returns 0, 0, 0, NaN
 
 function round() {
-    function humanChooses(choice) {
+    function humanChooses() {
+        switch (humanChoice) {
+            case 'rock' // FINISH
+        }
     };
     function newRound() {
     roundCount++;
@@ -63,13 +63,7 @@ function round() {
     console.log('Random number:' + randomNumber)
     console.log('Computer choice:' + compChoice);
     };
-    if (humanChoice = rock) {
-        humanChooses(rock);
-    } else if (humanChoice = paper) {
-        humanChooses(paper);
-    } else if (humanChoice = scissors) {
-        humanChooses(scissors);
-    } // captures and sets the humans choice for evaluation
+
     if (humanWL < 1.5 && humanWL > 0.5 || humanWL === NaN) {
         newRound();
     } else if (humanWL >= 1.5) {
@@ -79,6 +73,7 @@ function round() {
     } else {
         alert('Javascript error.')
     } // starts a new round if no one has won
+    humanChoice = undefined;
 };
 
 function compRock() {
