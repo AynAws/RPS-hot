@@ -91,8 +91,9 @@ function round() {
     console.log('Random number:' + randomNumber)
     console.log('Computer choice:' + compChoice);
     };
-    if (end) {
-        window.location.reload;
+    if (end === true) {
+        window.location.reload();
+        console.log('THE END IS NIGH');
     }
     roundEval();
     if (humanWL < 4 && humanWL > 0.25 || humanWL === NaN) {
@@ -100,9 +101,11 @@ function round() {
     } else if (humanWL >= 4) {
         document.getElementById('win').classList.add('visible');
         end = true;
+        newRound();
     } else if (humanWL <= 0.25) {
         document.getElementById('lose').classList.add('visible');
         end = true;
+        newRound();
     } else {
         alert('Javascript error.');
     } // starts a new round if no one has won. Ends game if game is won or lost. A winning status must be maintaine for a round in order to win.
