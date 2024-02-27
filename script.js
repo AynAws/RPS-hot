@@ -100,10 +100,12 @@ function round() {
         newRound();
     } else if (humanWL >= 4) {
         document.getElementById('win').classList.add('visible');
+        document.getElementById('win').classList.remove('invisible');
         end = true;
         newRound();
     } else if (humanWL <= 0.25) {
         document.getElementById('lose').classList.add('visible');
+        document.getElementById('lose').classList.remove('invisible');
         end = true;
         newRound();
     } else {
