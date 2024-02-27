@@ -44,3 +44,19 @@ h3 {
 .center {
   text-align: center;
 }
+
+.invisible {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+#win {
+  color: #198754;
+}
+
+#lose {
+  color: #dc3545;
+}
