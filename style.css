@@ -45,14 +45,6 @@ h3 {
   text-align: center;
 }
 
-.invisible {
-  visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
-}
-
 #win {
   color: #198754;
 }

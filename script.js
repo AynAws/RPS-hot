@@ -96,16 +96,14 @@ function round() {
         console.log('THE END IS NIGH');
     }
     roundEval();
-    if (humanWL < 4 && humanWL > 0.25 || humanWL === NaN) {
+    if (humanWL < 2 && humanWL > 0.5 || humanWL === NaN) {
         newRound();
-    } else if (humanWL >= 4) {
-        document.getElementById('win').classList.add('visible');
-        document.getElementById('win').classList.remove('invisible');
+    } else if (humanWL >= 2) {
+        document.getElementById('win').classList.remove('smtext');
         end = true;
         newRound();
-    } else if (humanWL <= 0.25) {
-        document.getElementById('lose').classList.add('visible');
-        document.getElementById('lose').classList.remove('invisible');
+    } else if (humanWL <= 0.5) {
+        document.getElementById('lose').classList.remove('smtext');
         end = true;
         newRound();
     } else {
