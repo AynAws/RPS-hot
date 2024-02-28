@@ -12,11 +12,9 @@ let compChoice;
 let humanChoice; // defines the varibale that will story the user's choice
 // WINDOW WIDTH
 let x = window.screen.width; // assigns screen width to a variable known as x
-console.log('Width:' + x); // returns screen width in pixels
 // TIMER
 let time = 3; // creates the varibale timer
 document.getElementById('timer').textContent = time; // places the timer in HTML doc
-//const stopTimer = () => clearInterval(interval); // stops the timer when called
 // COUNTERS
 let compCount = 1; // creates variables for computer win count
 let humanCount = 1; // creates variables for human win count count
@@ -41,8 +39,6 @@ if (x < 640) {
     document.getElementById('left').classList.add('right');
     document.getElementById('d:none').classList.add('smtext');
 }; // makes the counters change sides based off of screen size (upon refresh)
-
-console.log('Computer count: ' + compCount, 'Human count: ' + humanCount, 'Round count: ' + roundCount, 'W/L ratio: ' + humanWL); // returns 1, 1, 0, 1
 
 function round() {
     function roundEval() {
@@ -75,7 +71,6 @@ function round() {
     };
     function newRound() {
     roundCount++;
-    console.log('Round count in round():' + roundCount);
     time = 3;
     interval;
     humanWL = humanCount / compCount;
@@ -88,12 +83,9 @@ function round() {
     randNum();
     randomNumber = randNum();
     compChoice = compList[randomNumber]; // decides what the computer chooses
-    console.log('Random number:' + randomNumber)
-    console.log('Computer choice:' + compChoice);
     };
     if (end === true) {
         window.location.reload();
-        console.log('THE END IS NIGH');
     }
     roundEval();
     if (humanWL < 2 && humanWL > 0.5 || humanWL === NaN) {
@@ -112,15 +104,9 @@ function round() {
     humanChoice = undefined;
 };
 
-function compRock() {
-}
-console.log('Round count:' + roundCount);
-
 function timer() {
     time--;
-    console.log('Timer:' + time);
     if (time < 0) {
-//        stopTimer();
         round();
     };
     document.getElementById('timer').textContent = time;
