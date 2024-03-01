@@ -1,5 +1,5 @@
 # WIN
-Gain a W/L ratio of 2 to win.
+Gain a W/L ratio of 4 to win.
 
 # LOSE
-Gain a W/L ratio of 0.5 to lose.
+Gain a W/L ratio of 0.25 to lose.

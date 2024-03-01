@@ -15,6 +15,7 @@ let x = window.screen.width; // assigns screen width to a variable known as x
 // TIMER
 let time = 3; // creates the variable timer
 document.getElementById('timer').textContent = time; // places the timer in HTML doc
+stopTimer = () => clearInterval(interval); // stops the timer when called
 // COUNTERS
 let compCount = 1; // creates variables for computer win count
 let humanCount = 1; // creates variables for human win count count
@@ -85,7 +86,7 @@ function round() {
     compChoice = compList[randomNumber]; // decides what the computer chooses
     };
     roundEval();
-    if (humanWL < 2 && humanWL > 0.5 || humanWL === NaN) {
+    if (humanWL< 4 && humanWL > 0.25 || humanWL === NaN) {
         newRound();
     } else if (humanWL >= 2) {
         document.getElementById('win').classList.remove('smtext');
@@ -100,7 +101,8 @@ function round() {
     } // starts a new round if no one has won. Ends game if game is won or lost. A winning status must be maintaine for a round in order to win.
     humanChoice = undefined;
     if (end === true) {
-        window.location.reload();
+        setTimeout(reset, 3000);
+        stopTimer();
     }
 };
 
@@ -113,12 +115,12 @@ function timer() {
 }; // subtracts one from the variable "time" until it hits 0
 const interval = setInterval(timer, 1000); // runs timer() every second
 
+function reset() {window.location.reload()}
+
 function shotgunChange() {
     compList = shot;
-    document.getElementById('shot').classList.remove('smtext');
+    //document.getElementById('shot').classList.remove('smtext');
     document.getElementById('rock').textContent = 'Reload';
     document.getElementById('paper').textContent = 'Shield';
     document.getElementById('scissors').textContent = 'Reflect';
-    
-
 }
