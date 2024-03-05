@@ -114,7 +114,7 @@ function timer(game) {
     document.getElementById('timer').textContent = time;
 }; // subtracts one from the variable "time" until it hits 0
 const interval = setInterval(timer, 1000, round); // runs timer() every second
-const shotgunInterval = setInterval(timer, 1000, shotRound);
+//const shotgunInterval = setInterval(timer, 1000, shotRound);
 
 function reset() {window.location.reload()}
 
