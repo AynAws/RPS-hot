@@ -85,7 +85,6 @@ function round() {
     document.getElementById('humanCount').textContent = humanCount;
     document.getElementById('compCount').textContent = compCount;
     document.getElementById('humanWL').textContent = humanWL;
-    document.getElementById('humanChoice').textContent = humanChoice;
     document.getElementById('compChoice').textContent = compChoice;
     randNum();
     randomNumber = randNum();
@@ -121,18 +120,12 @@ function timer(game) {
 }; // subtracts one from the variable "time" until it hits 0
 const interval = setInterval(timer, 1000, round); // runs timer() every second
 
+// Updates HTML independent of timer
+function updateHTML() {
+    document.getElementById('humanChoice').textContent = humanChoice;
+}
 
 function reset() {window.location.reload()}
-
-function reload() {
-    document.getElementById('rock').classList.add('smtext');
-    document.getElementById('shot').classList.remove('smtext');
-}
-
-function shotgun() {
-    document.getElementById('rock').classList.remove('smtext');
-    document.getElementById('shot').classList.add('smtext');
-}
 
 function shotgunChange() {
     stopTimer();
@@ -152,6 +145,7 @@ function shotgunChange() {
     document.getElementById('rock').setAttribute("onClick", "humanChoice='reload'");
     document.getElementById('paper').setAttribute("onClick", "humanChoice='shield'");
     document.getElementById('scissors').setAttribute("onClick", "humanChoice='reflect'");
+    // Resets game counters
     time = 3;
     humanCount = 1;
     compCount = 1;
@@ -159,38 +153,46 @@ function shotgunChange() {
     const shotgunInterval = setInterval(timer, 1000, shotRound);
 }
 
+function reload() {
+    document.getElementById('rock').classList.add('smtext');
+    document.getElementById('shot').classList.remove('smtext');
+}
+
+function shield() {
+    document.getElementById('paper').classList.add('smtext');
+}
+
+function reflect() {
+    document.getElementById('scissors').classList.add('smtext');
+}
+
+function shotgun() {
+    document.getElementById('shot').classList.add('smtext');
+    document.getElementById('rock').classList.remove('smtext');
+}
+
+function shotgunReset() {
+    humanChoice = undefined;
+    document.getElementById('rock')
+    document.getElementById('paper')
+    document.getElementById('scissors')
+    document.getElementById('')
+}
+
 function shotRound() {
     function roundEval() {
         switch (humanChoice) {
             case 'reload':
                 reload();
-                if (compChoice === 'paper') {
-                    compCount++;
-                } else if (compChoice === 'scissors') {
-                    humanCount++;
-                }
                 break;
             case 'shield':
-                if (compChoice === 'rock') {
-                    humanCount++;
-                } else if (compChoice === 'scissors') {
-                    compCount++;
-                }
+                shield();
                 break;
             case 'reflect':
-                if (compChoice === 'rock') {
-                    compCount++;
-                } else if (compChoice === 'paper') {
-                    humanCount++;
-                }
+                reflect();
                 break;
             case 'shotgun':
                 shotgun();
-                if (compChoice === 'rock') {
-                    compCount++;
-                } else if (compChoice === 'paper') {
-                    humanCount++;
-                }
                 break;
             default:
                 compCount++;
@@ -206,7 +208,6 @@ function shotRound() {
     document.getElementById('humanCount').textContent = humanCount;
     document.getElementById('compCount').textContent = compCount;
     document.getElementById('humanWL').textContent = humanWL;
-    document.getElementById('humanChoice').textContent = humanChoice;
     document.getElementById('compChoice').textContent = compChoice;
     randNum();
     randomNumber = randNum();
@@ -226,7 +227,7 @@ function shotRound() {
     } else {
         alert('Javascript error.');
     } // starts a new round if no one has won. Ends game if game is won or lost. A winning status must be maintaine for a round in order to win.
-    humanChoice = undefined;
+    shotgunReset();
     if (end === true) {
         setTimeout(reset, 3000);
         stopTimer();
