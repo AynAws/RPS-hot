@@ -126,5 +126,11 @@ function shotgunChange() {
     document.getElementById('paper').textContent = 'Shield';
     document.getElementById('scissors').textContent = 'Reflect';
 
+    // Changes btn classes
+    document.getElementById('rock').classList.add('btn-danger');
+    document.getElementById('paper').classList.add('btn-danger');
+    document.getElementById('scissors').classList.add('btn-danger');
+
     // Changes onclick
+    document.getElementById('rock').onclick
 }
