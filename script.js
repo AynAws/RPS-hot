@@ -49,6 +49,8 @@ function round() {
                     compCount++;
                 } else if (compChoice === 'scissors') {
                     humanCount++;
+                } else {
+                    humanCount++;
                 }
                 break;
             case 'paper':
@@ -56,6 +58,8 @@ function round() {
                     humanCount++;
                 } else if (compChoice === 'scissors') {
                     compCount++;
+                } else {
+                    humanCount++;
                 }
                 break;
             case 'scissors':
@@ -196,7 +200,7 @@ function shotRound() {
     function newRound() {
     roundCount++;
     time = 3;
-    interval;
+    shotgunInterval;
     humanWL = humanCount / compCount;
     document.getElementById('roundCount').textContent = roundCount;
     document.getElementById('humanCount').textContent = humanCount;
