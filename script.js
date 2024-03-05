@@ -119,13 +119,11 @@ const shotgunInterval = setInterval(timer, 1000, shotRound);
 function reset() {window.location.reload()}
 
 function reload() {
-    humanChoice = 'reload';
     document.getElementById('rock').classList.add('smtext');
     document.getElementById('shot').classList.remove('smtext');
 }
 
 function shotgun() {
-    humanChoice = 'shotgun';
     document.getElementById('rock').classList.remove('smtext');
     document.getElementById('shot').classList.add('smtext');
 }
@@ -146,30 +144,43 @@ function shotgunChange() {
     document.getElementById('scissors').classList.add('btn-danger');
 
     // Changes onclick
-    document.getElementById('rock').setAttribute("onClick", "reload()");
+    document.getElementById('rock').setAttribute("onClick", "humanChoice='reload'");
     document.getElementById('paper').setAttribute("onClick", "humanChoice='shield'");
     document.getElementById('scissors').setAttribute("onClick", "humanChoice='reflect'");
+    time = 3;
+    humanCount = 1;
+    compCount = 1;
+    roundCount = 0;
     shotgunInterval;
 }
 
 function shotRound() {
     function roundEval() {
         switch (humanChoice) {
-            case 'rock':
+            case 'reload':
+                reload();
                 if (compChoice === 'paper') {
                     compCount++;
                 } else if (compChoice === 'scissors') {
                     humanCount++;
                 }
                 break;
-            case 'paper':
+            case 'shield':
                 if (compChoice === 'rock') {
                     humanCount++;
                 } else if (compChoice === 'scissors') {
                     compCount++;
                 }
                 break;
-            case 'scissors':
+            case 'reflect':
+                if (compChoice === 'rock') {
+                    compCount++;
+                } else if (compChoice === 'paper') {
+                    humanCount++;
+                }
+                break;
+            case 'shotgun':
+                shotgun();
                 if (compChoice === 'rock') {
                     compCount++;
                 } else if (compChoice === 'paper') {
