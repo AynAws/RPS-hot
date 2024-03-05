@@ -127,5 +127,4 @@ function shotgunChange() {
     document.getElementById('scissors').textContent = 'Reflect';
 
     // Changes onclick
-    document.getElementById('rock').onclick =;
 }
