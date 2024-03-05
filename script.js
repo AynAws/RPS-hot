@@ -114,10 +114,24 @@ function timer(game) {
     document.getElementById('timer').textContent = time;
 }; // subtracts one from the variable "time" until it hits 0
 const interval = setInterval(timer, 1000, round); // runs timer() every second
+const shotgunInterval = setInterval(timer, 1000, shotRound);
 
 function reset() {window.location.reload()}
 
+function reload() {
+    humanChoice = 'reload';
+    document.getElementById('rock').classList.add('smtext');
+    document.getElementById('shot').classList.remove('smtext');
+}
+
+function shotgun() {
+    humanChoice = 'shotgun';
+    document.getElementById('rock').classList.remove('smtext');
+    document.getElementById('shot').classList.add('smtext');
+}
+
 function shotgunChange() {
+    stopTimer();
     compList = shot;
     //document.getElementById('shot').classList.remove('smtext');
 
@@ -132,5 +146,73 @@ function shotgunChange() {
     document.getElementById('scissors').classList.add('btn-danger');
 
     // Changes onclick
-    document.getElementById('rock').onclick
+    document.getElementById('rock').setAttribute("onClick", "reload()");
+    document.getElementById('paper').setAttribute("onClick", "humanChoice='shield'");
+    document.getElementById('scissors').setAttribute("onClick", "humanChoice='reflect'");
+    shotgunInterval;
 }
+
+function shotRound() {
+    function roundEval() {
+        switch (humanChoice) {
+            case 'rock':
+                if (compChoice === 'paper') {
+                    compCount++;
+                } else if (compChoice === 'scissors') {
+                    humanCount++;
+                }
+                break;
+            case 'paper':
+                if (compChoice === 'rock') {
+                    humanCount++;
+                } else if (compChoice === 'scissors') {
+                    compCount++;
+                }
+                break;
+            case 'scissors':
+                if (compChoice === 'rock') {
+                    compCount++;
+                } else if (compChoice === 'paper') {
+                    humanCount++;
+                }
+                break;
+            default:
+                compCount++;
+                break;
+        }
+    };
+    function newRound() {
+    roundCount++;
+    time = 3;
+    interval;
+    humanWL = humanCount / compCount;
+    document.getElementById('roundCount').textContent = roundCount;
+    document.getElementById('humanCount').textContent = humanCount;
+    document.getElementById('compCount').textContent = compCount;
+    document.getElementById('humanWL').textContent = humanWL;
+    document.getElementById('humanChoice').textContent = humanChoice;
+    document.getElementById('compChoice').textContent = compChoice;
+    randNum();
+    randomNumber = randNum();
+    compChoice = compList[randomNumber]; // decides what the computer chooses
+    };
+    roundEval();
+    if (humanWL < 4 && humanWL > 0.25 || humanWL === NaN) {
+        newRound();
+    } else if (humanWL >= 2) {
+        document.getElementById('win').classList.remove('smtext');
+        end = true;
+        newRound();
+    } else if (humanWL <= 0.5) {
+        document.getElementById('lose').classList.remove('smtext');
+        end = true;
+        newRound();
+    } else {
+        alert('Javascript error.');
+    } // starts a new round if no one has won. Ends game if game is won or lost. A winning status must be maintaine for a round in order to win.
+    humanChoice = undefined;
+    if (end === true) {
+        setTimeout(reset, 3000);
+        stopTimer();
+    }
+};
