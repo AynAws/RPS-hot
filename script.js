@@ -106,21 +106,26 @@ function round() {
     }
 };
 
-function timer() {
+function timer(game) {
     time--;
     if (time < 0) {
-        round();
+        game();
     };
     document.getElementById('timer').textContent = time;
 }; // subtracts one from the variable "time" until it hits 0
-const interval = setInterval(timer, 1000); // runs timer() every second
+const interval = setInterval(timer, 1000, round); // runs timer() every second
 
 function reset() {window.location.reload()}
 
 function shotgunChange() {
     compList = shot;
     //document.getElementById('shot').classList.remove('smtext');
+
+    // Changes button text to reflect shotgun
     document.getElementById('rock').textContent = 'Reload';
     document.getElementById('paper').textContent = 'Shield';
     document.getElementById('scissors').textContent = 'Reflect';
+
+    // Changes onclick
+    document.getElementById('rock').onclick =;
 }
