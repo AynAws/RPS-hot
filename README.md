@@ -8,3 +8,6 @@ Obtain a W/L ratio of 4 to win the game.
 
 # LOSE
 Obtain a W/L ratio of 0.25 to lose the game.
+
+# Shotgun variant
+Clith the S-hot button in the bottom right corner to activate the shotgun variant.
