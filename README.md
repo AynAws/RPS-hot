@@ -27,6 +27,6 @@ If your opponent uses a shotgun, the game continues and the Shield becomes unava
 If your opponent uses a shotgun, you win.
 - Shotgun
 
-If your opponent reloads or passes, you win. If both of you use Shotgun, you must quickly type out word that will be given to you before your opponent. The first person to type their word wins. If both of you type it at the same moment, the game continues. If the game continues after you use Shotgun, you cannot use Shotgun again untilyou reload.
+If your opponent reloads or passes, you win. If both of you use Shotgun, you must quickly type out word that will be given to you before your opponent. The first person to type their word wins. If both of you type it at the same moment, the game continues. If the game continues after you use Shotgun, you cannot use Shotgun again until you reload.
 
 Using any of the buttons will make it unavailable for the following round. This makes passing a viable option, as you will then have all your options available the following round.
