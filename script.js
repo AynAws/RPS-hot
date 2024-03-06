@@ -185,8 +185,8 @@ function shieldBreak(target) {
 
 function shotgunReset() {
     humanChoice = undefined;
-    document.getElementById('paper').remove('smtext');
-    document.getElementById('scissors').remove('smtext');
+    document.getElementById('paper').classList.remove('smtext');
+    document.getElementById('scissors').classList.remove('smtext');
 }
 
 function shotRound() {
