@@ -36,6 +36,10 @@ h3 {
   display: none;
 }
 
+.smtextperm {
+  display: none;
+}
+
 .center {
   text-align: center;
   justify-content: center;

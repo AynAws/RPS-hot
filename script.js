@@ -1,6 +1,6 @@
 let name = prompt('What is your name?'); // Collects and stores user name
 // COMPUTER CHOICE (continues in newRound() func)
-let shot = ['shot', 'mirror', 'shield', 'reload']; // values for s-hot
+let shot = ['shot', 'mirror', 'reload', 'shield',]; // values for s-hot
 let rps = ['rock', 'paper', 'scissors']; // values for rock paper scissors
 let compList = rps;
 let randomNumber;
@@ -127,10 +127,11 @@ function updateHTML() {
 
 function reset() {window.location.reload()}
 
+let shotgunInterval;
+
 function shotgunChange() {
     stopTimer();
     compList = shot;
-
     // Changes button text to reflect shotgun
     document.getElementById('rock').textContent = 'Reload';
     document.getElementById('paper').textContent = 'Shield';
@@ -142,17 +143,17 @@ function shotgunChange() {
     document.getElementById('scissors').classList.add('btn-danger');
 
     // Changes onclick
-    document.getElementById('rock').setAttribute("onClick", "humanChoice='reload'");
-    document.getElementById('paper').setAttribute("onClick", "humanChoice='shield'");
-    document.getElementById('scissors').setAttribute("onClick", "humanChoice='reflect'");
+    document.getElementById('rock').setAttribute("onClick", "humanChoice='reload', updateHTML()");
+    document.getElementById('paper').setAttribute("onClick", "humanChoice='shield', updateHTML()");
+    document.getElementById('scissors').setAttribute("onClick", "humanChoice='reflect', updateHTML()");
     // Resets game counters
-    time = 3;
+    time = 4;
     humanCount = 1;
     compCount = 1;
     roundCount = 0;
-    const shotgunInterval = setInterval(timer, 1000, shotRound);
+    shotgunInterval = setInterval(timer, 1000, shotRound);
 }
-
+// Following functions execute the abilities of the options
 function reload() {
     document.getElementById('rock').classList.add('smtext');
     document.getElementById('shot').classList.remove('smtext');
@@ -171,12 +172,20 @@ function shotgun() {
     document.getElementById('rock').classList.remove('smtext');
 }
 
+function shieldBreak(target) {
+    switch (target) {
+        case user:
+            document.getElementById('paper').classList.add('smtextperm');
+            break;
+        case comp:
+            shot.pop();
+    }
+}
+
 function shotgunReset() {
     humanChoice = undefined;
-    document.getElementById('rock')
-    document.getElementById('paper')
-    document.getElementById('scissors')
-    document.getElementById('')
+    document.getElementById('paper').remove('smtext');
+    document.getElementById('scissors').remove('smtext');
 }
 
 function shotRound() {
@@ -187,6 +196,7 @@ function shotRound() {
                 break;
             case 'shield':
                 shield();
+                compChoice === 'shotgun' ? shieldBreak(user) : humanChoice = humanChoice; // if compChoice is shotgun, break the users shield
                 break;
             case 'reflect':
                 reflect();
@@ -201,7 +211,7 @@ function shotRound() {
     };
     function newRound() {
     roundCount++;
-    time = 3;
+    time = 4;
     shotgunInterval;
     humanWL = humanCount / compCount;
     document.getElementById('roundCount').textContent = roundCount;
