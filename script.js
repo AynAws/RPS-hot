@@ -179,6 +179,7 @@ function shieldBreak(target) {
             break;
         case comp:
             shot.pop();
+            break;
     }
 }
 
