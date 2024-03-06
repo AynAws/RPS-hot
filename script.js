@@ -1,6 +1,6 @@
 let name = prompt('What is your name?'); // Collects and stores user name
 // COMPUTER CHOICE (continues in newRound() func)
-let shot = ['shot', 'mirror', 'reload', 'shield',]; // values for s-hot
+let shot = ['shotgun', 'mirror', 'reload', 'shield',]; // values for s-hot
 let rps = ['rock', 'paper', 'scissors']; // values for rock paper scissors
 let compList = rps;
 let randomNumber;
