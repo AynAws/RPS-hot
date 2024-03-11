@@ -175,7 +175,7 @@ function shotgun() {
 function shieldBreak(target) {
     switch (target) {
         case user:
-            document.getElementById('paper').classList.add('smtextperm');
+            document.getElementById('paper').remove;
             break;
         case comp:
             shot.pop();
