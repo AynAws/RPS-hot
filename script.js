@@ -223,6 +223,7 @@ function shotRound() {
     randNum();
     randomNumber = randNum();
     compChoice = compList[randomNumber]; // decides what the computer chooses
+    console.log(compChoice)
     };
     roundEval();
     if (humanWL < 4 && humanWL > 0.25 || humanWL === NaN) {
