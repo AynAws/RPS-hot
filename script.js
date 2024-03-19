@@ -22,6 +22,8 @@ let humanCount = 1; // creates variables for human win count count
 let roundCount = 0; // creates variables for round count
 let humanWL = humanCount / compCount; // creates the W/L ratio counter
 let end = false; // will be set to true when game ends
+// SHOTGUN ELEMENT INDEX
+let shieldIndex, shotgunIndex, reloadIndex, mirrorIndex;
 
 alert(`Welcome, ${name}!`)
 document.getElementById('userName').textContent = name;
@@ -157,6 +159,8 @@ function shotgunChange() {
 function reload() {
     document.getElementById('rock').classList.add('smtext');
     document.getElementById('shot').classList.remove('smtext');
+    compList.unshift('shotgun');
+    console.log(compList);
 }
 
 function shield() {
@@ -178,7 +182,7 @@ function shieldBreak(target) {
             document.getElementById('paper').remove();
             break;
         case comp:
-            shot.pop();
+            compList.slice(shieldIndex);
             break;
     }
 }
@@ -187,6 +191,10 @@ function shotgunReset() {
     humanChoice = undefined;
     document.getElementById('paper').classList.remove('smtext');
     document.getElementById('scissors').classList.remove('smtext');
+    shieldIndex = compList.indexOf('shield');
+    shotgunIndex = compList.indexOf('shotgun');
+    reloadIndex = compList.indexOf('reload');
+    mirrorIndex = compList.indexOf('mirror');
 }
 
 function shotRound() {
