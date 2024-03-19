@@ -171,11 +171,11 @@ function shotgun() {
     document.getElementById('shot').classList.add('smtext');
     document.getElementById('rock').classList.remove('smtext');
 }
-
+let user, comp;
 function shieldBreak(target) {
     switch (target) {
         case user:
-            document.getElementById('paper').remove;
+            document.getElementById('paper').remove();
             break;
         case comp:
             shot.pop();
@@ -223,7 +223,7 @@ function shotRound() {
     randNum();
     randomNumber = randNum();
     compChoice = compList[randomNumber]; // decides what the computer chooses
-    console.log(compChoice)
+    console.log(compChoice);
     };
     roundEval();
     if (humanWL < 4 && humanWL > 0.25 || humanWL === NaN) {
