@@ -134,6 +134,12 @@ let shotgunInterval;
 function shotgunChange() {
     stopTimer();
     compList = shot;
+    shieldIndex = compList.indexOf('shield');
+    shotgunIndex = compList.indexOf('shotgun');
+    reloadIndex = compList.indexOf('reload');
+    mirrorIndex = compList.indexOf('mirror');
+    shot.splice(shotgunIndex);
+    console.log(shot)
     // Changes button text to reflect shotgun
     document.getElementById('rock').textContent = 'Reload';
     document.getElementById('paper').textContent = 'Shield';
