@@ -1,4 +1,19 @@
 let name = prompt('What is your name?'); // Collects and stores user name
+// OBJECTS FOR SHOTGUN ARRAY
+let objShotgun = {
+    load: false,
+    used: false
+};
+let objShield = {
+    break: false,
+    used: false
+};
+let objMirror = {
+    used: false
+};
+let objReload = {
+    load: false
+};
 // COMPUTER CHOICE (continues in newRound() func)
 let shot = ['shotgun', 'mirror', 'reload', 'shield',]; // values for s-hot
 let rps = ['rock', 'paper', 'scissors']; // values for rock paper scissors
@@ -138,8 +153,8 @@ function shotgunChange() {
     shotgunIndex = compList.indexOf('shotgun');
     reloadIndex = compList.indexOf('reload');
     mirrorIndex = compList.indexOf('mirror');
-    shot.splice(shotgunIndex);
-    console.log(shot)
+    compList.splice(shotgunIndex, 1);
+    console.log(compList);
     // Changes button text to reflect shotgun
     document.getElementById('rock').textContent = 'Reload';
     document.getElementById('paper').textContent = 'Shield';
@@ -188,7 +203,7 @@ function shieldBreak(target) {
             document.getElementById('paper').remove();
             break;
         case comp:
-            compList.slice(shieldIndex);
+            compList.splice(shieldIndex, 1);
             break;
     }
 }
