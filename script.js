@@ -180,8 +180,6 @@ function shotgunChange() {
 function reload() {
     document.getElementById('rock').classList.add('smtext');
     document.getElementById('shot').classList.remove('smtext');
-    compList.unshift('shotgun');
-    console.log(compList);
 }
 
 function shield() {
