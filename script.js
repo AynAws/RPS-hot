@@ -217,14 +217,25 @@ function shotgunReset() {
 }
 
 function shotRound() {
+    let prevCompChoice;
+    function compBrain() {
+        randomNumber = randNum();
+        compChoice = compList[randomNumber];
+        console.log(compChoice + ' Brain runs!');
+        compLoop();
+    }
+    function compLoop() {
+        compChoice === prevCompChoice ? compBrain() : console.log(compChoice + ' Brain does not run!');
+    }
     function roundEval() {
+        compLoop();
         switch (humanChoice) {
             case 'reload':
                 reload();
                 break;
             case 'shield':
                 shield();
-                compChoice === 'shotgun' ? shieldBreak(user) : humanChoice = humanChoice; // if compChoice is shotgun, break the users shield
+                compChoice === 'shotgun' ? shieldBreak(user) : console.log('Shield remains intact!'); // if compChoice is shotgun, break the users shield
                 break;
             case 'reflect':
                 reflect();
@@ -250,9 +261,9 @@ function shotRound() {
     randNum();
     randomNumber = randNum();
     compChoice = compList[randomNumber]; // decides what the computer chooses
-    console.log(compChoice);
     };
     roundEval();
+    prevCompChoice = compChoice;
     if (humanWL < 4 && humanWL > 0.25 || humanWL === NaN) {
         newRound();
     } else if (humanWL >= 2) {
