@@ -8,14 +8,14 @@ let objShield = {
     break: false,
     used: false
 };
-let objMirror = {
+let objReflect = {
     used: false
 };
 let objReload = {
     load: false
 };
 // COMPUTER CHOICE (continues in newRound() func)
-let shot = ['shotgun', 'mirror', 'reload', 'shield',]; // values for s-hot
+let shot = ['shotgun', 'reflect', 'reload', 'shield',]; // values for s-hot
 let rps = ['rock', 'paper', 'scissors']; // values for rock paper scissors
 let compList = rps;
 let randomNumber;
@@ -38,7 +38,7 @@ let roundCount = 0; // creates variables for round count
 let humanWL = humanCount / compCount; // creates the W/L ratio counter
 let end = false; // will be set to true when game ends
 // SHOTGUN ELEMENT INDEX
-let shieldIndex, shotgunIndex, reloadIndex, mirrorIndex;
+let shieldIndex, shotgunIndex, reloadIndex, reflectIndex;
 
 alert(`Welcome, ${name}!`)
 document.getElementById('userName').textContent = name;
@@ -152,7 +152,7 @@ function shotgunChange() {
     shieldIndex = compList.indexOf('shield');
     shotgunIndex = compList.indexOf('shotgun');
     reloadIndex = compList.indexOf('reload');
-    mirrorIndex = compList.indexOf('mirror');
+    reflectIndex = compList.indexOf('reflect');
     compList.splice(shotgunIndex, 1);
     console.log(compList);
     // Changes button text to reflect shotgun
@@ -180,14 +180,18 @@ function shotgunChange() {
 function reload() {
     document.getElementById('rock').classList.add('smtext');
     document.getElementById('shot').classList.remove('smtext');
+    document.getElementById('scissors').classList.remove('smtext');
+    document.getElementById('paper').classList.remove('smtext');
 }
 
 function shield() {
     document.getElementById('paper').classList.add('smtext');
+    document.getElementById('scissors').classList.remove('smtext');
 }
 
 function reflect() {
     document.getElementById('scissors').classList.add('smtext');
+    document.getElementById('paper').classList.remove('smtext');
 }
 
 function shotgun() {
@@ -213,9 +217,9 @@ function shotgunReset() {
     shieldIndex = compList.indexOf('shield');
     shotgunIndex = compList.indexOf('shotgun');
     reloadIndex = compList.indexOf('reload');
-    mirrorIndex = compList.indexOf('mirror');
+    reflectIndex = compList.indexOf('reflect');
 }
-
+let counter = 0;
 function shotRound() {
     let prevCompChoice;
     function compBrain() {
@@ -225,7 +229,8 @@ function shotRound() {
         compLoop();
     }
     function compLoop() {
-        compChoice === prevCompChoice ? compBrain() : console.log(compChoice + ' Brain does not run!');
+        counter++;
+        compChoice === prevCompChoice ? compBrain() : console.log(compChoice + ' Brain does not run!' + counter);
     }
     function roundEval() {
         compLoop();
